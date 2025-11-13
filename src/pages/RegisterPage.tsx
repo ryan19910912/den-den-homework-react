@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Input, Button, Card, Typography, message, Steps, App as AntdApp } from 'antd';
+import { Form, Input, Button, Card, Typography, Steps, App as AntdApp } from 'antd';
 import { LockOutlined, MailOutlined, SafetyOutlined } from '@ant-design/icons';
 import { useCountdown } from '../hooks/useCountdown';
 import { sendRegisterVerificationCodeApi, registerApi } from '../api/auth';
@@ -23,7 +23,7 @@ const RegisterPage: React.FC = () => {
 
     const navigate = useNavigate();
 
-    const { message, notification } = AntdApp.useApp();
+    const { notification } = AntdApp.useApp();
 
     // 導入倒計時 Hook
     const { countdown, isCounting, startCountdown } = useCountdown();

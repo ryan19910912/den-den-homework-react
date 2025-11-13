@@ -19,7 +19,7 @@ const LoginPage: React.FC = () => {
 
     const { countdown, isCounting, startCountdown } = useCountdown();
 
-    const { message, notification } = AntdApp.useApp();
+    const { notification } = AntdApp.useApp();
 
     const navigate = useNavigate();
 

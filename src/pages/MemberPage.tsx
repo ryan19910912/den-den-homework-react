@@ -18,7 +18,7 @@ const MemberPage: React.FC = () => {
 
     const navigate = useNavigate();
 
-    const { message, notification } = AntdApp.useApp();
+    const { notification } = AntdApp.useApp();
 
     const handleFetchLastLoginTime = useCallback(async () => {
 
