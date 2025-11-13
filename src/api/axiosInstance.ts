@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // 設置 API 基礎路徑
-const API_BASE_URL = ''; // 根據您的後端地址修改
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
 
 const api = axios.create({
     baseURL: API_BASE_URL,
