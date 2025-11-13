@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Input, Button, Card, Typography, Steps, App as AntdApp } from 'antd';
+import { Form, Input, Button, Card, Typography, Steps, App as AntdApp, Row, Col } from 'antd';
 import { LockOutlined, MailOutlined, SafetyOutlined } from '@ant-design/icons';
 import { useCountdown } from '../hooks/useCountdown';
 import { sendRegisterVerificationCodeApi, registerApi } from '../api/auth';
@@ -130,7 +130,7 @@ const RegisterPage: React.FC = () => {
 
     return (
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
-            <Card style={{ width: 450, boxShadow: '0 8px 20px rgba(0,0,0,0.15)' }}>
+            <Card style={{ width: 400, boxShadow: '0 8px 20px rgba(0,0,0,0.15)' }}>
                 <Title level={3} style={{ textAlign: 'center', color: '#1890ff', marginBottom: 24 }}>
                     📝 新用戶註冊
                 </Title>
@@ -184,27 +184,32 @@ const RegisterPage: React.FC = () => {
                             </div>
 
                             {/* 驗證碼輸入 */}
-                            <Form.Item
-                                label="驗證碼"
-                                name="verificationCode"
-                                rules={[{ required: true, message: '請輸入收到的驗證碼！' }]}
-                            >
-                                <Input
-                                    prefix={<SafetyOutlined />}
-                                    placeholder="輸入 6 位驗證碼"
-                                    maxLength={6}
-                                    addonAfter={
-                                        <Button
-                                            type="link"
-                                            size="small"
-                                            onClick={handleSendCode}
-                                            disabled={isCounting}
-                                            loading={loading && !isCounting}
+                            <Form.Item label="驗證碼">
+                                <Row gutter={8}>
+                                    <Col span={14}>
+                                        <Form.Item
+                                            name="verificationCode"
+                                            noStyle
+                                            rules={[{ required: true, message: '請輸入驗證碼！' }]}
                                         >
-                                            {isCounting ? `${countdown}s 後重發` : '重發驗證碼'}
+                                            <Input
+                                                prefix={<SafetyOutlined />}
+                                                placeholder="請輸入驗證碼"
+                                                maxLength={6}
+                                            />
+                                        </Form.Item>
+                                    </Col>
+                                    <Col span={10}>
+                                        <Button
+                                            onClick={handleSendCode}
+                                            disabled={isCounting || loading}
+                                            loading={loading && !isCounting}
+                                            style={{ width: '100%' }}
+                                        >
+                                            {isCounting ? `${countdown}s 後重發` : '發送驗證碼'}
                                         </Button>
-                                    }
-                                />
+                                    </Col>
+                                </Row>
                             </Form.Item>
 
                             {/* 密碼輸入 */}
