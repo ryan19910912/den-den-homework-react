@@ -91,7 +91,7 @@ const MemberPage: React.FC = () => {
             if (response.data && response.data.code === 0) {
                 notification.success({
                     message: "🎉登出成功！",
-                    description: "登出成功，將會您返回登入頁面。",
+                    description: "登出成功，將為您返回登入頁面。",
                     duration: 4.5,
                     placement: 'top',
                 });
